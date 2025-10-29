@@ -55,3 +55,26 @@ Every improvement or new concept learned will be committed here.
 This is a growing portfolio toward becoming a Data Engineer.
 
 Stay tuned. More to come! 🚀
+## 📦 Pipeline: checkout_event_dq_pipeline
+
+**Goal:** Build a tiny end-to-end pipeline for checkout events
+- Step 1 `build_fact_table.sql`: aggregate day x region metrics into a fact view
+- Step 2 `top_level_aggregation.sql`: derive top-N records by volume
+- Step 3 `data_quality_checks.sql`: run three basic DQ checks
+
+**Tables (desensitized):**
+- Source: `analytics.sample_checkout_events(event_time, user_id, device_id, action_type, region, page_section, target_type)`
+- Targets (dev only): 
+  - `dev_sandbox.fact_checkout_sample`
+  - `dev_sandbox.fact_checkout_sample_top`
+
+**Run order:**
+1. Execute `build_fact_table.sql`
+2. Execute `top_level_aggregation.sql`
+3. Execute `data_quality_checks.sql` (expect all zeros if clean)
+
+**Notes:**
+- Date window is hardcoded for demo. Replace with `${start_date}` and `${end_date}` variables when scheduling.
+- Namespace `dev_sandbox` is a personal schema placeholder. Change to your own dev schema.
+- Safe in dev. No writes to production tables.
+
