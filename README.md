@@ -1,6 +1,6 @@
 # data-learning-qiyan 📊
 
-Hi, I’m Qiyan 👋  
+ 
 This repository documents my personal learning and practice projects in **data engineering** and **big data processing**.
 
 My goal is to gradually build hands-on experience in:
